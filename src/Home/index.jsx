@@ -20,6 +20,20 @@ export function Home(){
           setItens(prevState => [...prevState,nomeItem]);       // Isso pega a lista atual de itens e atualiza adicionando um novo item no final, o que está no input
           setNomeItem('');                                      // Reseta o input, deixando em branco
     }
+
+    function RemoverItem(name) {
+        // return console.log(alunos.filter(aluno => aluno !== name))
+        Alert.alert("Remover",`Remover o item ${name}?`,[
+            {
+                text: 'Sim',
+                onPress: () => setItens(prevState => prevState.filter(item => item !== name))    //Aqui o filter vai iterar cada elemento do array, aqui chamado de "item". Então o "setItens" vai atualizar a lista de itens para que tenha todos os elementos com exceção do item citado.
+            },
+            {
+                text: 'Não',
+                style:'cancel'
+            }
+        ])
+    }
 }
 
 
