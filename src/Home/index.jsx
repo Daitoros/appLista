@@ -2,21 +2,23 @@ import { styles } from './style';
 import { useState } from 'react';
 import { Alert, FlatList, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { Itens } from '../../components/Itens';
+//import { customAlert, closeAlert } from '../../components/CustomAlert';
 
 
 export function Home(){
-    // return (
-    //     <View style={styles.container}>
-    //         <Text style={styles.text}>Open up App.js to start working on your app!</Text>
-    //     </View>
-    // )
     const [itens, setItens ] = useState([]);        // Cria um array vazio de itens e o estabelece no react como um estado dinâmico. setItens será usado para adicionar itens no array.
     const [nomeItem, setNomeItem] = useState('');    // Cria array de nome do item para ser preenchido pelo input.
+    // const [isAlertVisible, setAlertVisible] = useState(false);
+    // const closeAlert = () => {
+    //     setAlertVisible(false);
+    //   };
+
 
     function AddItem() {
         
         if (itens.includes(nomeItem)) {             // Checa se o item escrito no input já existe no array de itens
             return Alert.alert("Item já existe", "Já existe um item na lista com esse nome.");
+            //setAlertVisible(true);                   adicionar para alerta customizado
           }
       
           setItens(prevState => [...prevState,nomeItem]);       // Isso pega a lista atual de itens e atualiza adicionando um novo item no final, o que está no input
@@ -69,8 +71,8 @@ export function Home(){
                 keyExtractor={(item) => item}                           //Define uma chave para cada item
                 renderItem={({ item })=> (                              //Define como cada item será renderizado
                     <Itens
-                        key={item}
-                        name={item}                                     //nomeia os itens
+                        key={item}                                      //Passagem de parâmetros da função Itens
+                        name={item}                                     
                         onRemove={() => RemoverItem(item)}              //ao remover o item, aciona a função removendo da lista. (O botão de remover está dentro de Itens)
                     />
                 )}
@@ -81,6 +83,12 @@ export function Home(){
                     </Text>
                 )}
             />
+            {/* <CustomAlert
+                isVisible={isAlertVisible}
+                onClose={closeAlert}
+                message="Já existe um item na lista com esse nome."
+                imageSource={require('./path-to-your-image.png')}
+            /> */}
         </View>
     )
 
