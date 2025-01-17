@@ -11,7 +11,7 @@ export function Itens({ name, onRemove }) {
 
       <TouchableOpacity style={styles.button} onPress={onRemove}>
           <Text style={styles.buttonText}>
-            -
+           🗑️
           </Text>
         </TouchableOpacity>
     </View>

@@ -1,6 +1,7 @@
 import { styles } from './style';
 import { useState } from 'react';
 import { Alert, FlatList, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Itens } from '../../components/Itens';
 
 
 export function Home(){
